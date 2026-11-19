@@ -123,7 +123,7 @@ enum InteractionMode {
 }
 ```
 
-Provides the core structure for various interaction. Has the potential to be expanded into more interaction modes.
+Provides the core structure for various interaction modes. Has the potential to be expanded into more interaction modes.
 
 ### Variables
 
@@ -243,7 +243,7 @@ This is an example integration, not a requirement for every project. Your own pl
 
 ## Demo
 
-The demo scene contains objects configured to showcase each interaction mode. You can experiment with their `Interactable` properties through the Inspector.
+The demo scene contains objects configured to showcase each interaction mode. You can experiment with their `Interactable` node properties through the Inspector.
 
 ---
 

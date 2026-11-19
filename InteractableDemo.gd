@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if parent:
-		if interactable_node.interaction_state:
+		if is_rotating:
 			parent.rotate_y(delta * 5)
 
 func make_sphere_black() -> void:
