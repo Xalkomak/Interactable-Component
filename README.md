@@ -114,7 +114,7 @@ If the parent does not have the configured method, an error is printed.
 
 ### Enum: `InteractionMode`
 
-```
+```gdscript
 enum InteractionMode {
 	ONE_SHOT,
 	TOGGLE,
@@ -123,7 +123,7 @@ enum InteractionMode {
 }
 ```
 
-Provides the core structure for various interaction. Has the potential to be expanded.
+Provides the core structure for various interaction. Has the potential to be expanded into more interaction modes.
 
 ### Variables
 
@@ -156,7 +156,7 @@ For Hold mode, pass `true` when starting and `false` when ending the interaction
 
 This example demonstrates a few different behaviours. The method names assigned to `call_method` in the Inspector must match methods on the parent.
 
-```
+```gdscript
 extends StaticBody3D
 
 var material: StandardMaterial3D
@@ -184,7 +184,6 @@ func toggle_sphere_color() -> void:
 func rotate_cube() -> void:
 	var parent := get_parent() as MeshInstance3D
 	var tween := get_tree().create_tween()
-
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(parent, "rotation:y", parent.rotation.y + deg_to_rad(90), 1.0)
@@ -203,7 +202,7 @@ The included demo controller uses a `RayCast3D` to detect objects in front of th
 
 ### Detecting an interactable
 
-```
+```gdscript
 if interaction_ray.is_colliding() and allow_interact:
 	var collider = interaction_ray.get_collider()
 	if collider.has_meta(Interactable.META_IS_INTERACTABLE):
@@ -212,7 +211,7 @@ if interaction_ray.is_colliding() and allow_interact:
 
 ### Retrieving the component
 
-```
+```gdscript
 var interactable: Interactable = collider.get_node(
 	collider.get_meta(Interactable.META_COMPONENT_NAME)
 )
