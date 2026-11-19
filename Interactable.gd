@@ -47,6 +47,10 @@ func register_meta() -> void:
 	parent_node.set_meta(META_COMPONENT_NAME, str(name))
 	if interaction_mode == InteractionMode.HOLD: parent_node.set_meta(META_HOLD, true)
 
+## Helper function to get the Interaction mode. Useful for debugging and especially Hold mode.
+func get_interaction_mode() -> InteractionMode:
+	return interaction_mode
+
 ## For UI purposes, returns the interaction prompt as a string.
 func get_prompt() -> String:
 	if allow_interact:
@@ -59,7 +63,7 @@ func get_prompt() -> String:
 				return interact_prompt if not interaction_state else ""
 	return ""
 
-## Processes the interaction event, typically using the _input() function.
+## Processes the interaction event, typically using the player's input.
 func process_interaction_event(toggle: bool = false) -> void:
 	if not allow_interact:
 		return

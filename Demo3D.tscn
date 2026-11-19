@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://by85j1l2ub8qm"]
+
+[ext_resource type="Script" uid="uid://d0qevk6d8brau" path="res://Player.gd" id="1_h6q4c"]
+[ext_resource type="Script" uid="uid://beggh14xn8wlj" path="res://Interactable.gd" id="2_lbk50"]
+[ext_resource type="Script" uid="uid://b0wqqkr6b85qg" path="res://InteractableDemo.gd" id="2_rcyt2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hd7l"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_h6q4c"]
+sky_material = SubResource("ProceduralSkyMaterial_1hd7l")
+
+[sub_resource type="Environment" id="Environment_lbk50"]
+background_mode = 2
+sky = SubResource("Sky_h6q4c")
+glow_enabled = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_xvdui"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xvdui"]
+size = Vector2(10, 10)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xvdui"]
+radius = 0.2
+
+[sub_resource type="LabelSettings" id="LabelSettings_xvdui"]
+font_size = 32
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_a4ptb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbk50"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rcyt2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcyt2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mytgc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rcyt2"]
+
+[node name="Demo3D" type="Node3D" unique_id=1976192522]
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=562786130]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1663642833]
+environment = SubResource("Environment_lbk50")
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1692194203]
+collision_layer = 2
+collision_mask = 6
+
+[node name="FloorCol" type="CollisionShape3D" parent="Floor" unique_id=1011056050]
+shape = SubResource("WorldBoundaryShape3D_xvdui")
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Floor" unique_id=68956241]
+mesh = SubResource("PlaneMesh_xvdui")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=517941170]
+collision_mask = 6
+script = ExtResource("1_h6q4c")
+
+[node name="PlayerCol" type="CollisionShape3D" parent="Player" unique_id=207229165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_xvdui")
+
+[node name="PlayerCam" type="Camera3D" parent="Player" unique_id=606799463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="InteractionRay" type="RayCast3D" parent="Player/PlayerCam" unique_id=888282107]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 0.5411765)
+debug_shape_thickness = 3
+
+[node name="PlayerCanvasLayer" type="CanvasLayer" parent="Player" unique_id=234894914]
+
+[node name="PlayerPrompt" type="Label" parent="Player/PlayerCanvasLayer" unique_id=647037876]
+custom_minimum_size = Vector2(512, 60)
+custom_maximum_size = Vector2(1080, 60)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -110.0
+offset_right = 256.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Prompt Goes Here."
+label_settings = SubResource("LabelSettings_xvdui")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Player/PlayerCanvasLayer" unique_id=1207803861]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1432367763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 4)
+mesh = SubResource("SphereMesh_a4ptb")
+surface_material_override/0 = SubResource("StandardMaterial3D_lbk50")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=450454125]
+collision_layer = 4
+script = ExtResource("2_rcyt2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=938317174]
+shape = SubResource("SphereShape3D_rcyt2")
+
+[node name="Interactable" type="Node" parent="MeshInstance3D/StaticBody3D" unique_id=53464419]
+script = ExtResource("2_lbk50")
+interact_prompt = "Make this sphere black"
+call_method = &"make_sphere_black"
+metadata/_custom_type_script = "uid://beggh14xn8wlj"
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D" unique_id=1722438063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "One Shot"
+uppercase = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=588271753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 4)
+mesh = SubResource("SphereMesh_a4ptb")
+surface_material_override/0 = SubResource("StandardMaterial3D_rcyt2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2" unique_id=1237294181]
+collision_layer = 4
+script = ExtResource("2_rcyt2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D" unique_id=1896347244]
+shape = SubResource("SphereShape3D_rcyt2")
+
+[node name="Interactable" type="Node" parent="MeshInstance3D2/StaticBody3D" unique_id=16845152]
+script = ExtResource("2_lbk50")
+interaction_mode = 1
+interact_prompt = "Make this sphere black"
+interact_prompt_toggle = "Make this sphere white"
+call_method = &"toggle_sphere_color"
+metadata/_custom_type_script = "uid://beggh14xn8wlj"
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D2" unique_id=274311910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Toggle"
+uppercase = true
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1650631800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -4)
+mesh = SubResource("BoxMesh_mytgc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3" unique_id=757523656]
+collision_layer = 4
+script = ExtResource("2_rcyt2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D" unique_id=1242582302]
+shape = SubResource("BoxShape3D_rcyt2")
+
+[node name="Interactable" type="Node" parent="MeshInstance3D3/StaticBody3D" unique_id=1093372593]
+script = ExtResource("2_lbk50")
+interaction_mode = 3
+interact_prompt = "Rotate cube"
+call_method = &"rotate_cube"
+metadata/_custom_type_script = "uid://beggh14xn8wlj"
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D3" unique_id=1098773103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Always"
+uppercase = true
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=370871998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
+mesh = SubResource("BoxMesh_mytgc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4" unique_id=1460713959]
+collision_layer = 4
+script = ExtResource("2_rcyt2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D" unique_id=853016206]
+shape = SubResource("BoxShape3D_rcyt2")
+
+[node name="Interactable" type="Node" parent="MeshInstance3D4/StaticBody3D" unique_id=881280870]
+script = ExtResource("2_lbk50")
+interaction_mode = 2
+interact_prompt = "Hold to rotate cube"
+call_method = &"hold_rotate_cube"
+metadata/_custom_type_script = "uid://beggh14xn8wlj"
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D4" unique_id=2084992277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Hold"
+uppercase = true
