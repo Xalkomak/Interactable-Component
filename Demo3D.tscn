@@ -159,43 +159,43 @@ Mouse — Look around
 Left Click or E — Interact
 Esc — Quit"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1432367763]
+[node name="OneShotDemo" type="MeshInstance3D" parent="." unique_id=1432367763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 4)
 mesh = SubResource("SphereMesh_a4ptb")
 surface_material_override/0 = SubResource("StandardMaterial3D_lbk50")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=450454125]
+[node name="StaticBody3D" type="StaticBody3D" parent="OneShotDemo" unique_id=450454125]
 collision_layer = 4
 script = ExtResource("2_rcyt2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=938317174]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OneShotDemo/StaticBody3D" unique_id=938317174]
 shape = SubResource("SphereShape3D_rcyt2")
 
-[node name="Interactable" type="Node" parent="MeshInstance3D/StaticBody3D" unique_id=53464419]
+[node name="Interactable" type="Node" parent="OneShotDemo/StaticBody3D" unique_id=53464419]
 script = ExtResource("2_lbk50")
 interact_prompt = "Make this sphere black"
 call_method = &"make_sphere_black"
 metadata/_custom_type_script = "uid://beggh14xn8wlj"
 
-[node name="Label3D" type="Label3D" parent="MeshInstance3D" unique_id=1722438063]
+[node name="Label3D" type="Label3D" parent="OneShotDemo" unique_id=1722438063]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "One Shot"
 uppercase = true
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=588271753]
+[node name="ToggleDemo" type="MeshInstance3D" parent="." unique_id=588271753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 4)
 mesh = SubResource("SphereMesh_a4ptb")
 surface_material_override/0 = SubResource("StandardMaterial3D_rcyt2")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2" unique_id=1237294181]
+[node name="StaticBody3D" type="StaticBody3D" parent="ToggleDemo" unique_id=1237294181]
 collision_layer = 4
 script = ExtResource("2_rcyt2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D" unique_id=1896347244]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ToggleDemo/StaticBody3D" unique_id=1896347244]
 shape = SubResource("SphereShape3D_rcyt2")
 
-[node name="Interactable" type="Node" parent="MeshInstance3D2/StaticBody3D" unique_id=16845152]
+[node name="Interactable" type="Node" parent="ToggleDemo/StaticBody3D" unique_id=16845152]
 script = ExtResource("2_lbk50")
 interaction_mode = 1
 interact_prompt = "Make this sphere black"
@@ -203,55 +203,55 @@ interact_prompt_toggle = "Make this sphere white"
 call_method = &"toggle_sphere_color"
 metadata/_custom_type_script = "uid://beggh14xn8wlj"
 
-[node name="Label3D" type="Label3D" parent="MeshInstance3D2" unique_id=274311910]
+[node name="Label3D" type="Label3D" parent="ToggleDemo" unique_id=274311910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Toggle"
 uppercase = true
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1650631800]
+[node name="AlwaysDemo" type="MeshInstance3D" parent="." unique_id=1650631800]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -4)
 mesh = SubResource("BoxMesh_mytgc")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3" unique_id=757523656]
+[node name="StaticBody3D" type="StaticBody3D" parent="AlwaysDemo" unique_id=757523656]
 collision_layer = 4
 script = ExtResource("2_rcyt2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D" unique_id=1242582302]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AlwaysDemo/StaticBody3D" unique_id=1242582302]
 shape = SubResource("BoxShape3D_rcyt2")
 
-[node name="Interactable" type="Node" parent="MeshInstance3D3/StaticBody3D" unique_id=1093372593]
+[node name="Interactable" type="Node" parent="AlwaysDemo/StaticBody3D" unique_id=1093372593]
 script = ExtResource("2_lbk50")
 interaction_mode = 3
 interact_prompt = "Rotate cube"
 call_method = &"rotate_cube"
 metadata/_custom_type_script = "uid://beggh14xn8wlj"
 
-[node name="Label3D" type="Label3D" parent="MeshInstance3D3" unique_id=1098773103]
+[node name="Label3D" type="Label3D" parent="AlwaysDemo" unique_id=1098773103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Always"
 uppercase = true
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=370871998]
+[node name="HoldDemo" type="MeshInstance3D" parent="." unique_id=370871998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
 mesh = SubResource("BoxMesh_mytgc")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4" unique_id=1460713959]
+[node name="StaticBody3D" type="StaticBody3D" parent="HoldDemo" unique_id=1460713959]
 collision_layer = 4
 script = ExtResource("2_rcyt2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D" unique_id=853016206]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HoldDemo/StaticBody3D" unique_id=853016206]
 shape = SubResource("BoxShape3D_rcyt2")
 
-[node name="Interactable" type="Node" parent="MeshInstance3D4/StaticBody3D" unique_id=881280870]
+[node name="Interactable" type="Node" parent="HoldDemo/StaticBody3D" unique_id=881280870]
 script = ExtResource("2_lbk50")
 interaction_mode = 2
 interact_prompt = "Hold to rotate cube"
 call_method = &"hold_rotate_cube"
 metadata/_custom_type_script = "uid://beggh14xn8wlj"
 
-[node name="Label3D" type="Label3D" parent="MeshInstance3D4" unique_id=2084992277]
+[node name="Label3D" type="Label3D" parent="HoldDemo" unique_id=2084992277]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Hold"
@@ -274,15 +274,41 @@ Interactive Demo"
 font_size = 48
 
 [node name="Description" type="Label3D" parent="Signboard" unique_id=540495391]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.051)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, 0.051)
 text = "A rudimentary yet robust interaction system, all
 compressed into a singular node. Take a look
 around and try interacting with the four objects,
 each set to four interaction modes.
 1. One Shot: Interaction happens only once.
 2. Toggle: Swtches between ON and OFF States.
-3. Hold: Interaction continues as long as the
+3. Hold: Interaction executes for as long as the 
 interaction button is held.
-4. Always: Interaction is always active, regardless
-of its internal state."
+4. Always: Interaction is continuously available,
+regardless of its internal state."
+font_size = 28
+
+[node name="Signboard2" type="MeshInstance3D" parent="." unique_id=1684732687]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2, 4.5)
+mesh = SubResource("BoxMesh_xvdui")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Signboard2" unique_id=1353579606]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Signboard2/StaticBody3D" unique_id=1591997927]
+shape = SubResource("BoxShape3D_mytgc")
+
+[node name="Title" type="Label3D" parent="Signboard2" unique_id=1414117049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.051)
+text = "Use the Interactable node in
+your projects"
+font_size = 48
+
+[node name="Description" type="Label3D" parent="Signboard2" unique_id=437325301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0.051)
+text = "The interactable node is as easy as adding the
+Interactable node as a child to any PhysicsBody3D or
+PhysicsBody2D node that has a script attached
+to it and configuring the setup in the node's inspector.
+Go ahead! Try changing some values in the inspector
+of each of the Demo object's Interactable nodes."
 font_size = 28

@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
 
 @onready var player_cam: Camera3D = $PlayerCam
 @onready var interaction_ray: RayCast3D = %InteractionRay
