@@ -58,7 +58,7 @@ func handle_interactable(collider: Object) -> void:
 	player_prompt.text = interactable.get_prompt()
 	
 	if Input.is_action_just_pressed("interact"):
-		if interactable.get_interaction_mode() == Interactable.InteractionMode.HOLD: #Special case for Hold type interaction
+		if interactable.interaction_mode == Interactable.InteractionMode.HOLD: #Special case for Hold type interaction
 			interactable.process_interaction_event(true)
 			# Set to true or remove these lines if you want the player to move and rotate, but this is prone to breaking the interaction system
 			allow_movement = false
@@ -69,5 +69,5 @@ func handle_interactable(collider: Object) -> void:
 	if Input.is_action_just_released("interact"):
 		allow_movement = true
 		allow_rotate = true
-		if interactable.get_interaction_mode() == Interactable.InteractionMode.HOLD:
+		if interactable.interaction_mode == Interactable.InteractionMode.HOLD:
 			interactable.process_interaction_event(false)

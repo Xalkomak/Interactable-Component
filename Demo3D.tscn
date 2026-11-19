@@ -41,6 +41,12 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcyt2"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_xvdui"]
+size = Vector3(4, 3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mytgc"]
+size = Vector3(4, 3, 0.1)
+
 [node name="Demo3D" type="Node3D" unique_id=1976192522]
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=562786130]
@@ -223,3 +229,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 billboard = 1
 text = "Hold"
 uppercase = true
+
+[node name="Signboard" type="MeshInstance3D" parent="." unique_id=1810040484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
+mesh = SubResource("BoxMesh_xvdui")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Signboard" unique_id=392724352]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Signboard/StaticBody3D" unique_id=1466994785]
+shape = SubResource("BoxShape3D_mytgc")

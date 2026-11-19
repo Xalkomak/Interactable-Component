@@ -5,7 +5,6 @@ extends Node
 #region Constants
 const META_IS_INTERACTABLE := "Interactable" ## Registers the parent node as an interactable component.
 const META_COMPONENT_NAME := "InteractableNodeName" ## The name of the child Interactable node that the parent node references from.
-const META_HOLD := "Hold" ## Additional data that registers an interactable to be in HOLD mode.
 #endregion
 
 enum InteractionMode {
@@ -23,12 +22,12 @@ enum InteractionMode {
 @export var delta_threshold: float = 0.2 ## Maximum input delay allowed for HOLD interactions.
 
 var interaction_state: bool = false ## The current state of the interaction. Used by HOLD and TOGGLE modes. It is recommended to use Input.is_action_just_pressed() over Input.is_action_pressed() for HOLD mode.
-var parent_node: Node ## Internal reference to the parent node, preferably a PhysicsBody2D or PhysicsBody3D.
 var elapsed: float = 0 ## Time elapsed while the "interact" input is pressed before the interaction state becomes active. Used by HOLD mode.
 
 func _ready() -> void:
-	parent_node = get_parent()
-	register_meta()
+	## Registers the relevant metadata to this node's parent node.
+	get_parent().set_meta(META_IS_INTERACTABLE, true) ## Registers the parent node as an Interactable. Other scripts only need to look for this value using get_meta(Interactable.META_IS_INTERACTABLE)
+	get_parent().set_meta(META_COMPONENT_NAME, str(name)) ## This node registers its own name as shown in the scene tree to its parent. Other scripts can use get_meta(Interactable.META_COMPONENT_NAME) on the parent node to get a reference of this node.
 
 func _process(delta: float) -> void:
 	if not interaction_mode == InteractionMode.HOLD:
@@ -42,16 +41,6 @@ func _process(delta: float) -> void:
 			elapsed = 0
 		## For HOLD mode, interaction must only be allowed within a certain threshold dictated by delta_threshold
 		allow_interact = elapsed <= delta_threshold
-
-## Registers the relevant metadata to this node's parent node.
-func register_meta() -> void:
-	parent_node.set_meta(META_IS_INTERACTABLE, true) ## Registers the parent node as an Interactable. Other scripts only need to look for this value using get_meta(Interactable.META_IS_INTERACTABLE)
-	parent_node.set_meta(META_COMPONENT_NAME, str(name)) ## This node registers its own name as shown in the scene tree to its parent. Other scripts can use get_meta(Interactable.META_COMPONENT_NAME) on the parent node to get a reference of this node.
-	#if interaction_mode == InteractionMode.HOLD: parent_node.set_meta(META_HOLD, true)
-
-## Helper function to get the Interaction mode. Useful for debugging and especially Hold mode.
-func get_interaction_mode() -> InteractionMode:
-	return interaction_mode
 
 ## For UI purposes, returns the interaction prompt as a string.
 func get_prompt() -> String:
@@ -77,11 +66,6 @@ func process_interaction_event(toggle: bool = false) -> void:
 			interaction_state = not interaction_state
 		InteractionMode.HOLD:
 			interaction_state = toggle
-			#receiving_input = interaction_state
-			#parent_node.set_meta(META_HOLD, interaction_state)
-		InteractionMode.ALWAYS:
-			pass
-		_:
-			printerr("Interaction mode not recognized or not listed above.")
 	
-	parent_node.call(call_method) if parent_node.has_method(call_method) else printerr("Warning! Method name '", call_method, "' was not found!")
+	var parent_node = get_parent()
+	parent_node.call(call_method) if parent_node.has_method(call_method) else printerr("Method name '", call_method, "' was not found!")
