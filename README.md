@@ -110,7 +110,7 @@ If the parent does not have the configured method, an error is printed.
 | Constant | Value | Purpose |
 |---|---|---|
 | `META_IS_INTERACTABLE` | `"Interactable"` | Metadata key used to identify an interactable parent. |
-| `META_COMPONENT_NAME` | `"InteractableNodeName"` | Metadata key containing the component's node name. |
+| `META_COMPONENT_NAME` | `"InteractableNodeName"` | Metadata key containing the component's node name. You can change the node's name and it will still work. |
 
 ### Enum: `InteractionMode`
 
