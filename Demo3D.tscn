@@ -63,6 +63,22 @@ collision_mask = 6
 [node name="FloorCol" type="CollisionShape3D" parent="Floor" unique_id=1011056050]
 shape = SubResource("WorldBoundaryShape3D_xvdui")
 
+[node name="FloorCol2" type="CollisionShape3D" parent="Floor" unique_id=1291595613]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -5, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_xvdui")
+
+[node name="FloorCol3" type="CollisionShape3D" parent="Floor" unique_id=1335818794]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 5, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_xvdui")
+
+[node name="FloorCol4" type="CollisionShape3D" parent="Floor" unique_id=694951385]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 5)
+shape = SubResource("WorldBoundaryShape3D_xvdui")
+
+[node name="FloorCol5" type="CollisionShape3D" parent="Floor" unique_id=871871788]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -5)
+shape = SubResource("WorldBoundaryShape3D_xvdui")
+
 [node name="FloorMesh" type="MeshInstance3D" parent="Floor" unique_id=68956241]
 mesh = SubResource("PlaneMesh_xvdui")
 
@@ -105,7 +121,7 @@ label_settings = SubResource("LabelSettings_xvdui")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect2" type="ColorRect" parent="Player/PlayerCanvasLayer" unique_id=1959275171]
+[node name="CrosshairOuter" type="ColorRect" parent="Player/PlayerCanvasLayer" unique_id=1959275171]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -119,7 +135,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect" type="ColorRect" parent="Player/PlayerCanvasLayer" unique_id=1207803861]
+[node name="CrosshairInner" type="ColorRect" parent="Player/PlayerCanvasLayer/CrosshairOuter" unique_id=1207803861]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -131,6 +148,16 @@ offset_right = 2.5
 offset_bottom = 2.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PlayerInstructions" type="Label" parent="Player/PlayerCanvasLayer" unique_id=563596815]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 200.0
+offset_bottom = 111.0
+text = "WASD — Move around
+Mouse — Look around
+Left Click or E — Interact
+Esc — Quit"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1432367763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 4)
@@ -231,7 +258,7 @@ text = "Hold"
 uppercase = true
 
 [node name="Signboard" type="MeshInstance3D" parent="." unique_id=1810040484]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4.5)
 mesh = SubResource("BoxMesh_xvdui")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Signboard" unique_id=392724352]
@@ -239,3 +266,23 @@ collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Signboard/StaticBody3D" unique_id=1466994785]
 shape = SubResource("BoxShape3D_mytgc")
+
+[node name="Title" type="Label3D" parent="Signboard" unique_id=1183924615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.051)
+text = "Xalkomak's Interaction System
+Interactive Demo"
+font_size = 48
+
+[node name="Description" type="Label3D" parent="Signboard" unique_id=540495391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.051)
+text = "A rudimentary yet robust interaction system, all
+compressed into a singular node. Take a look
+around and try interacting with the four objects,
+each set to four interaction modes.
+1. One Shot: Interaction happens only once.
+2. Toggle: Swtches between ON and OFF States.
+3. Hold: Interaction continues as long as the
+interaction button is held.
+4. Always: Interaction is always active, regardless
+of its internal state."
+font_size = 28
