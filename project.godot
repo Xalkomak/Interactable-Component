@@ -13,7 +13,6 @@ config_version=5
 config/name="Interactable Component"
 run/main_scene="uid://by85j1l2ub8qm"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
 
 [debug]
 

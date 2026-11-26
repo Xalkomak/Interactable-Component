@@ -1,3 +1,4 @@
+@icon("res://Interactable/Interactable_Icon.png")
 ## Attach this node as a child to a PhysicsBody2D/3D to register the parent node as an interactable. Provides a robust set of options to fine-tune your interaction systems within the game world.
 class_name Interactable
 extends Node

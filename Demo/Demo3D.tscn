@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://by85j1l2ub8qm"]
 
-[ext_resource type="Script" uid="uid://d0qevk6d8brau" path="res://Player.gd" id="1_h6q4c"]
-[ext_resource type="Script" uid="uid://beggh14xn8wlj" path="res://Interactable.gd" id="2_lbk50"]
-[ext_resource type="Script" uid="uid://b0wqqkr6b85qg" path="res://InteractableDemo.gd" id="2_rcyt2"]
+[ext_resource type="Script" uid="uid://d0qevk6d8brau" path="res://Demo/Player.gd" id="1_8pr0w"]
+[ext_resource type="Script" uid="uid://b0wqqkr6b85qg" path="res://Demo/InteractableDemo.gd" id="2_yectk"]
+[ext_resource type="Script" uid="uid://beggh14xn8wlj" path="res://Interactable/Interactable.gd" id="3_cv10o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hd7l"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -84,7 +84,7 @@ mesh = SubResource("PlaneMesh_xvdui")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=517941170]
 collision_mask = 6
-script = ExtResource("1_h6q4c")
+script = ExtResource("1_8pr0w")
 
 [node name="PlayerCol" type="CollisionShape3D" parent="Player" unique_id=207229165]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -166,13 +166,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lbk50")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="OneShotDemo" unique_id=450454125]
 collision_layer = 4
-script = ExtResource("2_rcyt2")
+script = ExtResource("2_yectk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OneShotDemo/StaticBody3D" unique_id=938317174]
 shape = SubResource("SphereShape3D_rcyt2")
 
 [node name="Interactable" type="Node" parent="OneShotDemo/StaticBody3D" unique_id=53464419]
-script = ExtResource("2_lbk50")
+script = ExtResource("3_cv10o")
 interact_prompt = "Make this sphere black"
 call_method = &"make_sphere_black"
 metadata/_custom_type_script = "uid://beggh14xn8wlj"
@@ -190,13 +190,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rcyt2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="ToggleDemo" unique_id=1237294181]
 collision_layer = 4
-script = ExtResource("2_rcyt2")
+script = ExtResource("2_yectk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ToggleDemo/StaticBody3D" unique_id=1896347244]
 shape = SubResource("SphereShape3D_rcyt2")
 
 [node name="Interactable" type="Node" parent="ToggleDemo/StaticBody3D" unique_id=16845152]
-script = ExtResource("2_lbk50")
+script = ExtResource("3_cv10o")
 interaction_mode = 1
 interact_prompt = "Make this sphere black"
 interact_prompt_toggle = "Make this sphere white"
@@ -215,13 +215,13 @@ mesh = SubResource("BoxMesh_mytgc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="AlwaysDemo" unique_id=757523656]
 collision_layer = 4
-script = ExtResource("2_rcyt2")
+script = ExtResource("2_yectk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AlwaysDemo/StaticBody3D" unique_id=1242582302]
 shape = SubResource("BoxShape3D_rcyt2")
 
 [node name="Interactable" type="Node" parent="AlwaysDemo/StaticBody3D" unique_id=1093372593]
-script = ExtResource("2_lbk50")
+script = ExtResource("3_cv10o")
 interaction_mode = 3
 interact_prompt = "Rotate cube"
 call_method = &"rotate_cube"
@@ -239,13 +239,13 @@ mesh = SubResource("BoxMesh_mytgc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="HoldDemo" unique_id=1460713959]
 collision_layer = 4
-script = ExtResource("2_rcyt2")
+script = ExtResource("2_yectk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HoldDemo/StaticBody3D" unique_id=853016206]
 shape = SubResource("BoxShape3D_rcyt2")
 
 [node name="Interactable" type="Node" parent="HoldDemo/StaticBody3D" unique_id=881280870]
-script = ExtResource("2_lbk50")
+script = ExtResource("3_cv10o")
 interaction_mode = 2
 interact_prompt = "Hold to rotate cube"
 call_method = &"hold_rotate_cube"
